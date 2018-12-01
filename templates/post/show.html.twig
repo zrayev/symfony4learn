@@ -1,6 +1,12 @@
 {% extends 'layout--twocol.html.twig' %}
 {% block title %} {{ post.title }} {% endblock %}
 {% block body %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('blog') }}">Blog</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+        </ol>
+    </nav>
     {% block left %}
         <h1 class="text-center"> {{ post.title }} </h1>
     {% endblock %}
@@ -26,4 +32,3 @@
     {% endif %}
 
 {% endblock %}
-{#<img src="{{ asset(postData.img) }}"/>#}
