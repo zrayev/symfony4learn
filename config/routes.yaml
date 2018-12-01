@@ -5,3 +5,15 @@
 hello:
     path: /hello
     controller: App\Controller\HelloController::index
+
+article:
+    path: /article/{slug}
+    controller: App\Controller\PostController::show
+
+item:
+    path: /article/{slug}/item
+    controller: App\Controller\PostController::item
+
+blog:
+    path: /blog
+    controller: App\Controller\PostController::index

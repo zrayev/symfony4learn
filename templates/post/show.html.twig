@@ -1,0 +1,29 @@
+{% extends 'layout--twocol.html.twig' %}
+{% block title %} {{ post.title }} {% endblock %}
+{% block body %}
+    {% block left %}
+        <h1 class="text-center"> {{ post.title }} </h1>
+    {% endblock %}
+    {% block rigth %}
+        <p> {{ post.description }} </p>
+    {% endblock %}
+
+    <h3 class="text-center">Related articles</h3>
+
+    {% if relatedArticles %}
+        <div class="container">
+            <div class="row">
+                {% for key,article in relatedArticles %}
+                    <div class="col text-center">
+                        {{ render(url('item', { slug: key })) }}
+                    </div>
+                    {% if loop.index % 3 == 0 %}
+                        <div class="w-100"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
+{#<img src="{{ asset(postData.img) }}"/>#}

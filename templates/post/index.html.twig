@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %} Articles {% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Articles</h1>
+    {% if articles %}
+    <div class="container">
+        <div class="row">
+        {% for key,article in articles %}
+            <div class="col text-center">
+                <a href="{{ path('article', {slug: key}) }}"> {{ article.title }}</a>
+            </div>
+            {% if loop.index % 2 == 0 %}
+                <div class="w-100"></div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
+
