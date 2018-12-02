@@ -27,8 +27,8 @@
         {% endblock %}
     {% endembed %}
 
-    <h3 class="text-center pb-5">Related articles</h3>
     {% if relatedArticles %}
+        <h3 class="text-center pb-5">Related articles</h3>
         <div class="related-articles">
             <div class="row">
                 {% include 'post/layouts/_catalog-grid.html.twig' with {'articles' : relatedArticles} only %}

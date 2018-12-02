@@ -71,67 +71,78 @@ class PostController extends AbstractController
     /**
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
-        if ($this->blogData) {
+        if (isset($this->blogData)) {
             return $this->render('post/index.html.twig', [
                 'articles' => $this->blogData,
                 'lead' => $this->getLead(),
             ]);
         }
 
-        throw new NotFoundHttpException('Articles not found');
+        return $this->render('post/index.html.twig', [
+           'message' => 'Articles not found. You can will create new article.',
+        ]);
     }
 
     /**
-     * @param $slug string
+     * @param string $slug
      *
      * @return Response
      */
-    public function show($slug)
+    public function show(string $slug): Response
     {
-        if ($this->blogData[$slug]) {
-            return $this->render('post/show.html.twig', [
-                'post' => $this->blogData[$slug],
-                'relatedArticles' => $this->getRelatedArticles($slug),
-            ]);
+        if (!isset($this->blogData[$slug])) {
+            throw new NotFoundHttpException('Article not found');
         }
 
-        throw new NotFoundHttpException('Article not found');
+        return $this->render('post/show.html.twig', [
+            'post' => $this->blogData[$slug],
+            'relatedArticles' => $this->getRelatedArticles($slug),
+        ]);
     }
 
     /**
-     * @param $slug
+     * @param string $slug
      *
      * @return Response
      */
-    public function item($slug)
+    public function item(string $slug): Response
     {
+        if (!isset($this->blogData[$slug])) {
+            throw new NotFoundHttpException('Article not found');
+        }
+
         return $this->render('post/article-item.html.twig', [
             'post' => $this->blogData[$slug],
         ]);
     }
 
     /**
-     * @param $slug
+     * @param string $slug
      *
      * @return array
      */
-    public function getRelatedArticles($slug)
+    public function getRelatedArticles(string $slug): array
     {
         unset($this->blogData[$slug]);
 
         return $this->blogData;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function getLead()
     {
-        foreach ($this->blogData as $post) {
-            if ($post['status'] === self::STATUS_LEAD) {
-                return $post;
+        if (\count($this->blogData) > 0) {
+            foreach ($this->blogData as $post) {
+                if ($post['status'] === self::STATUS_LEAD) {
+                    return $post;
+                }
             }
         }
 
-        return false;
+        return null;
     }
 }

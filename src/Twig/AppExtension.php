@@ -7,6 +7,9 @@ use Twig\TwigFilter;
 
 class AppExtension extends AbstractExtension
 {
+    /**
+     * @return array|\Twig_Filter[]
+     */
     public function getFilters()
     {
         return [
@@ -20,7 +23,7 @@ class AppExtension extends AbstractExtension
      *
      * @return string
      */
-    public function getDescriptionFilter(string $text)
+    public function getDescriptionFilter(string $text): string
     {
         $new_text = substr($text, 0, 160);
         $description = trim($new_text);

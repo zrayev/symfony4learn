@@ -17,13 +17,15 @@
     {% endembed %}
 
     <h1 class="text-center">Simple blog</h1>
-    {% if articles %}
+    {% if articles is defined %}
         <div class="articles">
             {% include 'post/_lead.html.twig' with {'lead' : lead} only %}
             <div class="row">
                 {% include 'post/layouts/_catalog-grid.html.twig' with {'articles' : articles} only %}
             </div>
         </div>
+    {% else %}
+        <p class="text-center">{{ message }}</p>
     {% endif %}
 {% endblock %}
 

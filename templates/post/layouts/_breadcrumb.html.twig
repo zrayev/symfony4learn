@@ -2,12 +2,12 @@
     <ol class="breadcrumb">
         {% block home_link %}
             <li class="breadcrumb-item">
-                <a href="/">Home</a>
+                <a href="{{ path('index') }}">Home</a>
             </li>
         {% endblock %}
         {% block catalog_link %}
             <li class="breadcrumb-item">
-                <a href="/blog">Catalog</a>
+                <a href="{{ path('blog') }}">Catalog</a>
             </li>
         {% endblock %}
         {% block item_link %}
