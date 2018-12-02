@@ -5,6 +5,7 @@
         </div>
         <div class="col-md-8">
             <p class="lead">{{- lead.text|description(lead.text) -}}</p>
+            <span class="published float-right text-secondary">{{ lead.published_at|date("d/m/Y") }}</span>
         </div>
     </div>
     <hr class="my-4">

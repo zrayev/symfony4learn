@@ -1,0 +1,8 @@
+{% for key,article in articles|usort_published|reverse|batch(3) %}
+    {% for key,column in article %}
+        <div class="col-md-4">
+            {{ render(url('item', { slug: column.slug })) }}
+        </div>
+    {% endfor %}
+    <div class="w-100"></div>
+{% endfor %}

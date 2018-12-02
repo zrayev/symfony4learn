@@ -1,36 +1,37 @@
-{% extends 'base.html.twig' %}
+{% extends 'document.html.twig' %}
 {% block title %} {{ post.title }} {% endblock %}
-{% block body %}
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ path('blog') }}">Blog</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
-        </ol>
-    </nav>
 
-    <div class="row pb-4 align-items-center">
-        <div class="col-md-5">
+{% block body %}
+    {% embed "post/layouts/_breadcrumb.html.twig" %}
+        {% block catalog_link %}
+            <li class="breadcrumb-item">
+                <a href="{{ path('blog') }}">Blog</a>
+            </li>
+        {% endblock %}
+
+        {% block item_link %}
+            <li class="breadcrumb-item active" aria-current="page">
+                <span>{{ post.title }}</span>
+            </li>
+        {% endblock %}
+    {% endembed %}
+
+    {% embed "post/layouts/_single-post-skeleton.html.twig" %}
+        {% block left %}
             <img style="width: 100%; height: auto;" src="{{ asset(post.img) }}">
-        </div>
-        <div class="col-md-7">
+        {% endblock %}
+
+        {% block right %}
             <h1 class="text-center pb-4"> {{ post.title }} </h1>
             <p> {{ post.text }} </p>
-        </div>
-    </div>
+        {% endblock %}
+    {% endembed %}
 
     <h3 class="text-center pb-5">Related articles</h3>
-
     {% if relatedArticles %}
         <div class="related-articles">
             <div class="row">
-                {% for key,article in relatedArticles %}
-                    <div class="col-md-4">
-                        {{ render(url('item', { slug: key })) }}
-                    </div>
-                    {% if loop.index % 3 == 0 %}
-                        <div class="w-100"></div>
-                    {% endif %}
-                {% endfor %}
+                {% include 'post/layouts/_catalog-grid.html.twig' with {'articles' : relatedArticles} only %}
             </div>
         </div>
     {% endif %}

@@ -1,27 +1,33 @@
-{% extends 'base.html.twig' %}
+{% extends 'document.html.twig' %}
 {% block title %} Articles {% endblock %}
 
 {% block body %}
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li><span>Blog</span></li>
-        </ol>
-    </nav>
+    {% embed "post/layouts/_breadcrumb.html.twig" ignore missing %}
+        {% block home_link %}
+        {% endblock %}
+
+        {% block catalog_link %}
+        {% endblock %}
+
+        {% block item_link %}
+            <li class="breadcrumb-item active" aria-current="page">
+                <span>Blog</span>
+            </li>
+        {% endblock %}
+    {% endembed %}
+
     <h1 class="text-center">Simple blog</h1>
     {% if articles %}
-    <div class="articles">
-        {% include 'post/lead.html.twig' with {'lead' : lead} only %}
-        <div class="row">
-        {% for key,article in articles %}
-            <div class="col-md-4">
-                {{ render(url('item', { slug: key })) }}
+        <div class="articles">
+            {% include 'post/_lead.html.twig' with {'lead' : lead} only %}
+            <div class="row">
+                {% include 'post/layouts/_catalog-grid.html.twig' with {'articles' : articles} only %}
             </div>
-            {% if loop.index % 3 == 0 %}
-                <div class="w-100"></div>
-            {% endif %}
-        {% endfor %}
         </div>
-    </div>
     {% endif %}
 {% endblock %}
 
+{% block footer %}
+    <hr class="my-4">
+    {{ parent() }}
+{% endblock %}
