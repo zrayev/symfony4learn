@@ -1,4 +1,5 @@
 <article class="article item pb-4">
+    <img style="width: 100%; height: auto;" src="{{ asset(post.img) }}">
     <h3 class="text-center text-uppercase">{{- post.title -}}</h3>
     <p class="lead">{{- post.text|description(post.text) -}}</p>
     <a href="{{- path('article', {slug: post.slug}) -}}" class="btn btn-secondary btn-sm active" role="button"> Read more</a>

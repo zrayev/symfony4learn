@@ -1,8 +1,14 @@
 <div class="jumbotron">
-    <h1 class="display-4">{{- lead.title -}}</h1>
-    <p class="lead">{{- lead.text|description(lead.text) -}}</p>
+    <div class="row">
+        <div class="col-md-4">
+            <img style="width: 100%; height: auto;" src="{{ asset(lead.img) }}">
+        </div>
+        <div class="col-md-8">
+            <p class="lead">{{- lead.text|description(lead.text) -}}</p>
+        </div>
+    </div>
     <hr class="my-4">
-    <p class="lead">
+    <p class="lead text-right">
         <a class="btn btn-primary btn-lg" href="{{- path('article', {slug: lead.slug}) -}}" role="button"> Read</a>
     </p>
 </div>

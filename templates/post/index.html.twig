@@ -13,10 +13,10 @@
         {% include 'post/lead.html.twig' with {'lead' : lead} only %}
         <div class="row">
         {% for key,article in articles %}
-            <div class="col">
+            <div class="col-md-4">
                 {{ render(url('item', { slug: key })) }}
             </div>
-            {% if loop.index % 2 == 0 %}
+            {% if loop.index % 3 == 0 %}
                 <div class="w-100"></div>
             {% endif %}
         {% endfor %}

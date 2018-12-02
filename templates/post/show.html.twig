@@ -8,20 +8,15 @@
         </ol>
     </nav>
 
-    {% block twocoll %}
-        <div class="row d-flex align-items-center pb-4">
-            <div class="col-12 col-sm-4">
-                {% block left %}
-                    <h1 class="text-center pb-4"> {{ post.title }} </h1>
-                {% endblock %}
-            </div>
-            <div class="col-12 col-sm-8">
-                {% block rigth %}
-                    <p> {{ post.text }} </p>
-                {% endblock %}
-            </div>
+    <div class="row pb-4 align-items-center">
+        <div class="col-md-5">
+            <img style="width: 100%; height: auto;" src="{{ asset(post.img) }}">
         </div>
-    {% endblock %}
+        <div class="col-md-7">
+            <h1 class="text-center pb-4"> {{ post.title }} </h1>
+            <p> {{ post.text }} </p>
+        </div>
+    </div>
 
     <h3 class="text-center pb-5">Related articles</h3>
 
@@ -29,7 +24,7 @@
         <div class="related-articles">
             <div class="row">
                 {% for key,article in relatedArticles %}
-                    <div class="col">
+                    <div class="col-md-4">
                         {{ render(url('item', { slug: key })) }}
                     </div>
                     {% if loop.index % 3 == 0 %}
