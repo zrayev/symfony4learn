@@ -1,4 +1,4 @@
-{% extends 'layout--twocol.html.twig' %}
+{% extends 'base.html.twig' %}
 {% block title %} {{ post.title }} {% endblock %}
 {% block body %}
     <nav aria-label="breadcrumb">
@@ -7,20 +7,29 @@
             <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
         </ol>
     </nav>
-    {% block left %}
-        <h1 class="text-center"> {{ post.title }} </h1>
-    {% endblock %}
-    {% block rigth %}
-        <p> {{ post.description }} </p>
+
+    {% block twocoll %}
+        <div class="row d-flex align-items-center pb-4">
+            <div class="col-12 col-sm-4">
+                {% block left %}
+                    <h1 class="text-center pb-4"> {{ post.title }} </h1>
+                {% endblock %}
+            </div>
+            <div class="col-12 col-sm-8">
+                {% block rigth %}
+                    <p> {{ post.text }} </p>
+                {% endblock %}
+            </div>
+        </div>
     {% endblock %}
 
-    <h3 class="text-center">Related articles</h3>
+    <h3 class="text-center pb-5">Related articles</h3>
 
     {% if relatedArticles %}
-        <div class="container">
+        <div class="related-articles">
             <div class="row">
                 {% for key,article in relatedArticles %}
-                    <div class="col text-center">
+                    <div class="col">
                         {{ render(url('item', { slug: key })) }}
                     </div>
                     {% if loop.index % 3 == 0 %}
@@ -30,5 +39,4 @@
             </div>
         </div>
     {% endif %}
-
 {% endblock %}

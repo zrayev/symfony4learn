@@ -1,0 +1,8 @@
+<div class="jumbotron">
+    <h1 class="display-4">{{- lead.title -}}</h1>
+    <p class="lead">{{- lead.text|description(lead.text) -}}</p>
+    <hr class="my-4">
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{{- path('article', {slug: lead.slug}) -}}" role="button"> Read</a>
+    </p>
+</div>

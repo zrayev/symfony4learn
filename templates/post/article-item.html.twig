@@ -1,1 +1,5 @@
-<a href="{{ path('article', {slug: post.slug}) }}"> {{ post.title }}</a>
+<article class="article item pb-4">
+    <h3 class="text-center text-uppercase">{{- post.title -}}</h3>
+    <p class="lead">{{- post.text|description(post.text) -}}</p>
+    <a href="{{- path('article', {slug: post.slug}) -}}" class="btn btn-secondary btn-sm active" role="button"> Read more</a>
+</article>

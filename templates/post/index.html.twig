@@ -2,13 +2,19 @@
 {% block title %} Articles {% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Articles</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li><span>Blog</span></li>
+        </ol>
+    </nav>
+    <h1 class="text-center">Simple blog</h1>
     {% if articles %}
-    <div class="container">
+    <div class="articles">
+        {% include 'post/lead.html.twig' with {'lead' : lead} only %}
         <div class="row">
         {% for key,article in articles %}
-            <div class="col text-center">
-                <a href="{{ path('article', {slug: key}) }}"> {{ article.title }}</a>
+            <div class="col">
+                {{ render(url('item', { slug: key })) }}
             </div>
             {% if loop.index % 2 == 0 %}
                 <div class="w-100"></div>
