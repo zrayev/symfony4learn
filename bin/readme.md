@@ -1,0 +1,1 @@
+https://subsolar-echidna-3890.dataplicity.io/blog  -  HW 8 (Templating)
