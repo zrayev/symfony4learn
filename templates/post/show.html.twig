@@ -1,0 +1,38 @@
+{% extends 'document.html.twig' %}
+{% block title %} {{ post.title }} {% endblock %}
+
+{% block body %}
+    {% embed "post/layouts/_breadcrumb.html.twig" %}
+        {% block catalog_link %}
+            <li class="breadcrumb-item">
+                <a href="{{ path('blog') }}">Blog</a>
+            </li>
+        {% endblock %}
+
+        {% block item_link %}
+            <li class="breadcrumb-item active" aria-current="page">
+                <span>{{ post.title }}</span>
+            </li>
+        {% endblock %}
+    {% endembed %}
+
+    {% embed "post/layouts/_single-post-skeleton.html.twig" %}
+        {% block left %}
+            <img style="width: 100%; height: auto;" src="{{ asset(post.img) }}">
+        {% endblock %}
+
+        {% block right %}
+            <h1 class="text-center pb-4"> {{ post.title }} </h1>
+            <p> {{ post.text }} </p>
+        {% endblock %}
+    {% endembed %}
+
+    {% if relatedArticles %}
+        <h3 class="text-center pb-5">Related articles</h3>
+        <div class="related-articles">
+            <div class="row">
+                {% include 'post/layouts/_catalog-grid.html.twig' with {'articles' : relatedArticles} only %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
