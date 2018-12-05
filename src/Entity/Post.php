@@ -37,17 +37,17 @@ class Post
     private $text;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="datetime")
      */
     private $created_at;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="datetime")
      */
     private $modified_at;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="datetime")
      */
     private $published_at;
 
@@ -109,36 +109,36 @@ class Post
         return $this;
     }
 
-    public function getCreatedAt(): ?int
+    public function getCreatedAt()
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(int $created_at): self
+    public function setCreatedAt($created_at): self
     {
         $this->created_at = $created_at;
 
         return $this;
     }
 
-    public function getModifiedAt(): ?int
+    public function getModifiedAt()
     {
         return $this->modified_at;
     }
 
-    public function setModifiedAt(int $modified_at): self
+    public function setModifiedAt($modified_at): self
     {
         $this->modified_at = $modified_at;
 
         return $this;
     }
 
-    public function getPublishedAt(): ?int
+    public function getPublishedAt()
     {
         return $this->published_at;
     }
 
-    public function setPublishedAt(int $published_at): self
+    public function setPublishedAt($published_at): self
     {
         $this->published_at = $published_at;
 

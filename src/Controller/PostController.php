@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
+use App\Form\PostType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -102,6 +105,17 @@ class PostController extends AbstractController
         ]);
     }
 
+    public function view(string $slug): Response
+    {
+        if (!$slug) {
+            throw new NotFoundHttpException('Article not found');
+        }
+
+        return $this->render('post/view.html.twig', [
+            'slug' => $slug,
+        ]);
+    }
+
     /**
      * @param string $slug
      *
@@ -144,5 +158,25 @@ class PostController extends AbstractController
         }
 
         return null;
+    }
+
+    public function new(Request $request)
+    {
+        $post = new Post();
+        $form = $this->createForm(PostType::class, $post);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $task = $form->getData();
+
+            return $this->redirectToRoute('view_article', [
+                'slug' => $form->getData()->getSlug(),
+            ]);
+        }
+
+        return $this->render('post/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

@@ -1,0 +1,32 @@
+App\Entity\Post:
+    properties:
+        title:
+            - NotNull: ~
+            - Type:
+                  type: string
+                  message: The value {{ value }} is not a valid {{ type }}
+        slug:
+            - NotBlank: ~
+        description:
+            - NotBlank: ~
+            - Length:
+                  min: 65
+                  max: 120
+                  minMessage: 'Your description must be at least {{ limit }} characters long'
+                  maxMessage: 'Your description cannot be longer than {{ limit }} characters'
+        text:
+            - Length:
+                min: 350
+                max: 2024
+                minMessage: 'Your text of post must be at least {{ limit }} characters long'
+                maxMessage: 'Your text of post  cannot be longer than {{ limit }} characters'
+        created_at:
+            - DateTime: ~
+        modified_at:
+            - DateTime: ~
+        published_at:
+            - DateTime: ~
+        author_id:
+            - Type:
+                type: integer
+                message: The value {{ value }} is not a valid {{ type }}
