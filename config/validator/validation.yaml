@@ -17,6 +17,7 @@ App\Entity\Post:
                   minMessage: 'Your description must be at least {{ limit }} characters long'
                   maxMessage: 'Your description cannot be longer than {{ limit }} characters'
         text:
+            - NotNull: ~
             - Length:
                   min: 350
                   max: 2024
@@ -35,6 +36,7 @@ App\Entity\Post:
             - Type: \DateTime
             - GreaterThan: today UTC
         authorId:
+            - NotNull: ~
             - Type:
                   type: integer
                   message: The value {{ value }} is not a valid {{ type }}
@@ -42,6 +44,7 @@ App\Entity\Post:
 App\Entity\Comment:
     properties:
         text:
+            - NotNull: ~
             - Length:
                   min: 50
                   max: 1024
