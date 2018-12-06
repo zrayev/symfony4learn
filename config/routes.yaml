@@ -25,3 +25,7 @@ blog:
 create_post:
     path: /new
     controller: App\Controller\PostController::new
+
+create_comment:
+    path: comment/new
+    controller: App\Controller\CommentController::new

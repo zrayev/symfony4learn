@@ -168,11 +168,12 @@ class PostController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $task = $form->getData();
-
-            return $this->redirectToRoute('view_article', [
-                'slug' => $form->getData()->getSlug(),
-            ]);
+            $post = $form->getData();
+            if($post->getSlug() !== null) {
+                return $this->redirectToRoute('view_article', [
+                    'slug' => $post->getSlug(),
+                ]);
+            }
         }
 
         return $this->render('post/new.html.twig', [

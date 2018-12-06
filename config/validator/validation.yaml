@@ -1,12 +1,14 @@
 App\Entity\Post:
     properties:
         title:
-            - NotNull: ~
+            - NotNull:
             - Type:
                   type: string
                   message: The value {{ value }} is not a valid {{ type }}
         slug:
             - NotBlank: ~
+            - Lenght:
+                  max: 64
         description:
             - NotBlank: ~
             - Length:
@@ -16,10 +18,10 @@ App\Entity\Post:
                   maxMessage: 'Your description cannot be longer than {{ limit }} characters'
         text:
             - Length:
-                min: 350
-                max: 2024
-                minMessage: 'Your text of post must be at least {{ limit }} characters long'
-                maxMessage: 'Your text of post  cannot be longer than {{ limit }} characters'
+                  min: 350
+                  max: 2024
+                  minMessage: 'Your text of post must be at least {{ limit }} characters long'
+                  maxMessage: 'Your text of post  cannot be longer than {{ limit }} characters'
         created_at:
             - DateTime: ~
         modified_at:
@@ -28,5 +30,35 @@ App\Entity\Post:
             - DateTime: ~
         author_id:
             - Type:
-                type: integer
-                message: The value {{ value }} is not a valid {{ type }}
+                  type: integer
+                  message: The value {{ value }} is not a valid {{ type }}
+
+App\Entity\Comment:
+    properties:
+        text:
+            - Length:
+                  min: 50
+                  max: 1024
+                  minMessage: 'Your comment must be at least {{ limit }} characters long'
+                  maxMessage: 'Your comment cannot be longer than {{ limit }} characters'
+        author_name:
+            - NotNull: ~
+            - Length:
+                  max: 64
+            - Type:
+                  type: string
+                  message: The value {{ value }} is not a valid {{ type }
+        author_email:
+            - NotNull: ~
+            - Email:
+                  message: The email "{{ value }}" is not a valid email.
+                  checkMX: true
+        post_id:
+            - Type:
+                  type: integer
+                  message: The value {{ value }} is not a valid {{ type }}
+        created_date:
+            - DateTime: ~
+        approved_comment:
+            - Type:
+                  type: bool
