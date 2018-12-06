@@ -15,15 +15,13 @@ class CommentController extends AbstractController
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form
-            ->add('save', SubmitType::class, ['label' => 'Submit', 'attr' => ['class' => 'btn btn-default pull-right']]);
+            ->add('save', SubmitType::class, ['label' => 'Save', 'attr' => ['class' => 'btn btn-default pull-right']]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $comment = $form->getData();
+//            $comment = $form->getData();
 
-//            return $this->redirectToRoute('view_article', [
-//                'slug' => 'test',
-//            ]);
+            return $this->redirectToRoute('create_comment');
         }
 
         return $this->render('comment/new.html.twig', [

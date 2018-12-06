@@ -7,7 +7,7 @@ App\Entity\Post:
                   message: The value {{ value }} is not a valid {{ type }}
         slug:
             - NotBlank: ~
-            - Lenght:
+            - Length:
                   max: 64
         description:
             - NotBlank: ~
@@ -24,10 +24,13 @@ App\Entity\Post:
                   maxMessage: 'Your text of post  cannot be longer than {{ limit }} characters'
         created_at:
             - DateTime: ~
+            - Type: \DateTime
         modified_at:
             - DateTime: ~
+            - Type: \DateTime
         published_at:
             - DateTime: ~
+            - Type: \DateTime
         author_id:
             - Type:
                   type: integer
@@ -59,6 +62,9 @@ App\Entity\Comment:
                   message: The value {{ value }} is not a valid {{ type }}
         created_date:
             - DateTime: ~
+            - Type: \DateTime
         approved_comment:
             - Type:
                   type: bool
+            - 'IsTrue':
+                  message: The comment should approved.
