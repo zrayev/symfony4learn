@@ -22,19 +22,19 @@ App\Entity\Post:
                   max: 2024
                   minMessage: 'Your text of post must be at least {{ limit }} characters long'
                   maxMessage: 'Your text of post  cannot be longer than {{ limit }} characters'
-        created_at:
+        createdAt:
             - DateTime: ~
             - Type: \DateTime
             - GreaterThan: today UTC
-        modified_at:
+        modifiedAt:
             - DateTime: ~
             - Type: \DateTime
             - GreaterThan: today UTC
-        published_at:
+        publishedAt:
             - DateTime: ~
             - Type: \DateTime
             - GreaterThan: today UTC
-        author_id:
+        authorId:
             - Type:
                   type: integer
                   message: The value {{ value }} is not a valid {{ type }}
@@ -47,27 +47,28 @@ App\Entity\Comment:
                   max: 1024
                   minMessage: 'Your comment must be at least {{ limit }} characters long'
                   maxMessage: 'Your comment cannot be longer than {{ limit }} characters'
-        author_name:
+        authorName:
             - NotNull: ~
             - Length:
                   max: 64
             - Type:
                   type: string
                   message: The value {{ value }} is not a valid {{ type }
-        author_email:
+        authorEmail:
             - NotNull: ~
             - Email:
                   message: The email "{{ value }}" is not a valid email.
                   checkMX: true
-        post_id:
+        postId:
+            - NotNull:
             - Type:
                   type: integer
                   message: The value {{ value }} is not a valid {{ type }}
-        created_date:
+        createdDate:
             - DateTime: ~
             - Type: \DateTime
             - GreaterThan: today UTC
-        approved_comment:
+        approvedComment:
             - Type:
                   type: bool
             - 'IsTrue':

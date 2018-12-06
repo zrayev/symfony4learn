@@ -39,22 +39,22 @@ class Post
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $modified_at;
+    private $modifiedAt;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $published_at;
+    private $publishedAt;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $author_id;
+    private $authorId;
 
     public function getId(): ?int
     {
@@ -111,48 +111,48 @@ class Post
 
     public function getCreatedAt()
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt($created_at): self
+    public function setCreatedAt($createdAt): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     public function getModifiedAt()
     {
-        return $this->modified_at;
+        return $this->modifiedAt;
     }
 
-    public function setModifiedAt($modified_at): self
+    public function setModifiedAt($modifiedAt): self
     {
-        $this->modified_at = $modified_at;
+        $this->modifiedAt = $modifiedAt;
 
         return $this;
     }
 
     public function getPublishedAt()
     {
-        return $this->published_at;
+        return $this->publishedAt;
     }
 
-    public function setPublishedAt($published_at): self
+    public function setPublishedAt($publishedAt): self
     {
-        $this->published_at = $published_at;
+        $this->publishedAt = $publishedAt;
 
         return $this;
     }
 
     public function getAuthorId(): ?int
     {
-        return $this->author_id;
+        return $this->authorId;
     }
 
-    public function setAuthorId(int $author_id): self
+    public function setAuthorId(int $authorId): self
     {
-        $this->author_id = $author_id;
+        $this->authorId = $authorId;
 
         return $this;
     }

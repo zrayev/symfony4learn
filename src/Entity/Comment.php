@@ -24,27 +24,27 @@ class Comment
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $author_name;
+    private $authorName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $author_email;
+    private $authorEmail;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $post_id;
+    private $postId;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_date;
+    private $createdDate;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $approved_comment;
+    private $approvedComment;
 
     public function getId(): ?int
     {
@@ -65,60 +65,60 @@ class Comment
 
     public function getAuthorName(): ?string
     {
-        return $this->author_name;
+        return $this->authorName;
     }
 
-    public function setAuthorName(string $author_name): self
+    public function setAuthorName(string $authorName): self
     {
-        $this->author_name = $author_name;
+        $this->authorName = $authorName;
 
         return $this;
     }
 
     public function getAuthorEmail(): ?string
     {
-        return $this->author_email;
+        return $this->authorEmail;
     }
 
-    public function setAuthorEmail(string $author_email): self
+    public function setAuthorEmail(string $authorEmail): self
     {
-        $this->author_email = $author_email;
+        $this->authorEmail = $authorEmail;
 
         return $this;
     }
 
     public function getPostId(): ?int
     {
-        return $this->post_id;
+        return $this->postId;
     }
 
-    public function setPostId(int $post_id): self
+    public function setPostId(int $postId): self
     {
-        $this->post_id = $post_id;
+        $this->postId = $postId;
 
         return $this;
     }
 
     public function getCreatedDate()
     {
-        return $this->created_date;
+        return $this->createdDate;
     }
 
-    public function setCreatedDate($created_date)
+    public function setCreatedDate($createdDate)
     {
-        $this->created_date = $created_date;
+        $this->createdDate = $createdDate;
 
         return $this;
     }
 
     public function getApprovedComment(): ?bool
     {
-        return $this->approved_comment;
+        return $this->approvedComment;
     }
 
-    public function setApprovedComment(bool $approved_comment): self
+    public function setApprovedComment(bool $approvedComment): self
     {
-        $this->approved_comment = $approved_comment;
+        $this->approvedComment = $approvedComment;
 
         return $this;
     }
