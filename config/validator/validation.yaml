@@ -25,12 +25,15 @@ App\Entity\Post:
         created_at:
             - DateTime: ~
             - Type: \DateTime
+            - GreaterThan: today UTC
         modified_at:
             - DateTime: ~
             - Type: \DateTime
+            - GreaterThan: today UTC
         published_at:
             - DateTime: ~
             - Type: \DateTime
+            - GreaterThan: today UTC
         author_id:
             - Type:
                   type: integer
@@ -63,6 +66,7 @@ App\Entity\Comment:
         created_date:
             - DateTime: ~
             - Type: \DateTime
+            - GreaterThan: today UTC
         approved_comment:
             - Type:
                   type: bool
