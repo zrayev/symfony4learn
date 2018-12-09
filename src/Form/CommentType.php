@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -28,6 +29,7 @@ class CommentType extends AbstractType
             ->add('postId', IntegerType::class)
             ->add('createdDate', DateTimeType::class)
             ->add('approvedComment', CheckboxType::class)
+            ->add('save', SubmitType::class, ['label' => 'Save', 'attr' => ['class' => 'btn btn-default pull-right']])
         ;
     }
 
