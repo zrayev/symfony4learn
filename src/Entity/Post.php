@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
@@ -35,6 +36,16 @@ class Post
      * @ORM\Column(type="text")
      */
     private $text;
+
+    /**
+     * @ORM\Column(type="blob")
+     */
+    private $image;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $status;
 
     /**
      * @ORM\Column(type="datetime")
@@ -105,6 +116,28 @@ class Post
     public function setText(string $text): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage(File $image): void
+    {
+        $this->image = $image;
+    }
+
+    public function getStatus(): ?int
+    {
+        return $this->status;
+    }
+
+    public function setStatus(int $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

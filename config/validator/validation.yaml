@@ -23,6 +23,20 @@ App\Entity\Post:
                   max: 2024
                   minMessage: 'Your text of post must be at least {{ limit }} characters long'
                   maxMessage: 'Your text of post  cannot be longer than {{ limit }} characters'
+        image:
+            - File:
+                  maxSize: 2048k
+                  mimeTypes: [image/png, image/jpeg]
+                  mimeTypesMessage: Please upload a valid image
+            - Image:
+                  minWidth: 300
+                  maxWidth: 700
+                  minHeight: 200
+                  maxHeight: 400
+                  allowPortrait: false
+
+        status:
+            - NotNull: ~
         createdAt:
             - DateTime: ~
             - Type: \DateTime
