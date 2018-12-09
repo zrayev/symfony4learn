@@ -23,7 +23,7 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text', TextareaType::class)
+            ->add('text', TextareaType::class, ['purify_html' => true])
             ->add('authorName', TextType::class)
             ->add('authorEmail', EmailType::class)
             ->add('postId', IntegerType::class)
