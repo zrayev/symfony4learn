@@ -1,0 +1,88 @@
+App\Entity\Post:
+    properties:
+        title:
+            - NotNull:
+            - Type:
+                  type: string
+                  message: The value {{ value }} is not a valid {{ type }}
+        slug:
+            - NotBlank: ~
+            - Length:
+                  max: 64
+        description:
+            - NotBlank: ~
+            - Length:
+                  min: 65
+                  max: 120
+                  minMessage: 'Your description must be at least {{ limit }} characters long'
+                  maxMessage: 'Your description cannot be longer than {{ limit }} characters'
+        text:
+            - NotNull: ~
+            - Length:
+                  min: 350
+                  max: 2024
+                  minMessage: 'Your text of post must be at least {{ limit }} characters long'
+                  maxMessage: 'Your text of post  cannot be longer than {{ limit }} characters'
+        image:
+            - File:
+                  maxSize: 2048k
+                  mimeTypes: [image/png, image/jpeg]
+                  mimeTypesMessage: Please upload a valid image
+            - Image:
+                  minWidth: 300
+                  maxWidth: 700
+                  minHeight: 200
+                  maxHeight: 400
+                  allowPortrait: false
+
+        status:
+            - NotNull: ~
+        createdAt:
+            - DateTime: ~
+            - Type: \DateTime
+        modifiedAt:
+            - DateTime: ~
+            - Type: \DateTime
+        publishedAt:
+            - DateTime: ~
+            - Type: \DateTime
+        authorId:
+            - NotNull: ~
+            - Type:
+                  type: integer
+                  message: The value {{ value }} is not a valid {{ type }}
+
+App\Entity\Comment:
+    properties:
+        text:
+            - NotNull: ~
+            - Length:
+                  min: 50
+                  max: 1024
+                  minMessage: 'Your comment must be at least {{ limit }} characters long'
+                  maxMessage: 'Your comment cannot be longer than {{ limit }} characters'
+        authorName:
+            - NotNull: ~
+            - Length:
+                  max: 64
+            - Type:
+                  type: string
+                  message: The value {{ value }} is not a valid {{ type }
+        authorEmail:
+            - NotNull: ~
+            - Email:
+                  message: The email "{{ value }}" is not a valid email.
+                  checkMX: true
+        postId:
+            - NotNull:
+            - Type:
+                  type: integer
+                  message: The value {{ value }} is not a valid {{ type }}
+        createdDate:
+            - DateTime: ~
+            - Type: \DateTime
+        approvedComment:
+            - Type:
+                  type: bool
+            - 'IsTrue':
+                  message: The comment should approved.

@@ -6,9 +6,13 @@ index:
 #    path: /hello
 #    controller: App\Controller\HelloController::index
 
-article:
+#article:
+#    path: /article/{slug}
+#    controller: App\Controller\PostController::show
+
+view_article:
     path: /article/{slug}
-    controller: App\Controller\PostController::show
+    controller: App\Controller\PostController::view
 
 item:
     path: /article/{slug}/item
@@ -17,3 +21,11 @@ item:
 blog:
     path: /blog
     controller: App\Controller\PostController::index
+
+create_post:
+    path: /new
+    controller: App\Controller\PostController::new
+
+create_comment:
+    path: comment/new
+    controller: App\Controller\CommentController::new
